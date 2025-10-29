@@ -1,0 +1,25 @@
+{
+  "package": "mekceumoremachine.mixin.mekanism",
+  "refmap": "mixins.mekceumoremachine.refmap.json",
+  "target": "@env(DEFAULT)",
+  "minVersion": "0.8",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "MixinTileEntityAmbientAccumulatorEnergy",
+    "MixinTileEntityBin",
+    "MixinTileEntityChemicalInfuser",
+    "MixinTileEntityElectricPump",
+    "MixinTileEntityElectrolyticSeparator",
+    "MixinTileEntityEnergyCube",
+    "MixinTileEntityFluidTank",
+    "MixinTileEntityGasTank",
+    "MixinTileEntityIsotopicCentrifuge",
+    "MixinTileEntityRadioactiveWasteBarrel",
+    "MixinTileEntityRotaryCondensentrator",
+    "MixinTileEntitySolarNeutronActivator",
+    "MixinTileEntityUpgradeableMachine"
+  ],
+  "server": [],
+  "client": [
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "particle": "mekceumoremachine:blocks/models/radioactive_waste_barrel_basic",
+      "barrel": "mekceumoremachine:blocks/models/radioactive_waste_barrel_basic"
+    },
+    "model": "mekceumoremachine:radioactive_waste_barrel"
+  },
+  "variants": {
+    "tier": {
+      "elite": {
+        "textures": {
+          "particle": "mekceumoremachine:blocks/models/radioactive_waste_barrel_elite",
+          "barrel": "mekceumoremachine:blocks/models/radioactive_waste_barrel_elite"
+        }
+      },
+      "advanced": {
+        "textures": {
+          "particle": "mekceumoremachine:blocks/models/radioactive_waste_barrel_advanced",
+          "barrel": "mekceumoremachine:blocks/models/radioactive_waste_barrel_advanced"
+        }
+      },
+      "ultimate": {
+        "textures": {
+          "particle": "mekceumoremachine:blocks/models/radioactive_waste_barrel_ultimate",
+          "barrel": "mekceumoremachine:blocks/models/radioactive_waste_barrel_ultimate"
+        }
+      },
+      "basic": {
+        "textures": {
+          "particle": "mekceumoremachine:blocks/models/radioactive_waste_barrel_basic",
+          "barrel": "mekceumoremachine:blocks/models/radioactive_waste_barrel_basic"
+        }
+      },
+      "creative": {}
+    },
+    "facing": {
+      "east": {
+        "y": 90
+      },
+      "south": {
+        "y": 180
+      },
+      "north": {},
+      "west": {
+        "y": -90
+      },
+      "up": {
+        "x": -90
+      },
+      "down": {
+        "x": 90
+      }
+    },
+    "inventory": [
+      {
+        "y": 180
+      }
+    ]
+  }
+}

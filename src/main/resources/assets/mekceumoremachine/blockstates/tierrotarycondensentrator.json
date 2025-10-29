@@ -1,0 +1,58 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "all": "mekanism:blocks/models/rotary_condensentrator",
+      "all1": "mekceumoremachine:blocks/models/rotary_condensentrator_basic_valve"
+    },
+    "model": "mekceumoremachine:rotary_condensentrator"
+  },
+  "variants": {
+    "tier": {
+      "elite": {
+        "textures": {
+          "all1": "mekceumoremachine:blocks/models/rotary_condensentrator_elite_valve"
+        }
+      },
+      "advanced": {
+        "textures": {
+          "all1": "mekceumoremachine:blocks/models/rotary_condensentrator_advanced_valve"
+        }
+      },
+      "ultimate": {
+        "textures": {
+          "all1": "mekceumoremachine:blocks/models/rotary_condensentrator_ultimate_valve"
+        }
+      },
+      "basic": {
+        "textures": {
+          "all1": "mekceumoremachine:blocks/models/rotary_condensentrator_basic_valve"
+        }
+      },
+      "creative": {}
+    },
+    "facing": {
+      "east": {
+        "y": 90
+      },
+      "south": {
+        "y": 180
+      },
+      "north": {},
+      "west": {
+        "y": -90
+      },
+      "up": {
+        "x": -90
+      },
+      "down": {
+        "x": 90
+      }
+    },
+    "inventory": [
+      {
+        "y": 180
+      }
+    ]
+  }
+}

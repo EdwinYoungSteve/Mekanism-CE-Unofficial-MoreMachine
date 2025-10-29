@@ -1,0 +1,24 @@
+{
+  "result": {
+    "item": "mekceumoremachine:compositetierinstaller"
+  },
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+    {
+      "item": "mekanism:tierinstaller",
+      "data": 0
+    },
+    {
+      "item": "mekanism:tierinstaller",
+      "data": 1
+    },
+    {
+      "item": "mekanism:tierinstaller",
+      "data": 2
+    },
+    {
+      "item": "mekanism:tierinstaller",
+      "data": 3
+    }
+  ]
+}

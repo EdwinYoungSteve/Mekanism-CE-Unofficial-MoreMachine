@@ -1,0 +1,60 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "3": "mekanism:blocks/models/gas_tank_basic_valve",
+      "details": "mekceumoremachine:blocks/models/ambient_accumulator_basic"
+    },
+    "model": "mekceumoremachine:ambient_accumulator"
+  },
+  "variants": {
+    "tier": {
+      "elite": {
+        "textures": {
+          "3": "mekanism:blocks/models/gas_tank_elite_valve",
+          "details": "mekceumoremachine:blocks/models/ambient_accumulator_elite"
+        }
+      },
+      "advanced": {
+        "textures": {
+          "3": "mekanism:blocks/models/gas_tank_advanced_valve",
+          "details": "mekceumoremachine:blocks/models/ambient_accumulator_advanced"
+        }
+      },
+      "ultimate": {
+        "textures": {
+          "3": "mekanism:blocks/models/gas_tank_ultimate_valve",
+          "details": "mekceumoremachine:blocks/models/ambient_accumulator_ultimate"
+        }
+      },
+      "basic": {
+        "textures": {
+          "3": "mekanism:blocks/models/gas_tank_basic_valve",
+          "details": "mekceumoremachine:blocks/models/ambient_accumulator_basic"
+        }
+      },
+      "creative": {}
+    },
+    "facing": {
+      "east": {
+        "y": 90
+      },
+      "south": {
+        "y": 180
+      },
+      "north": {},
+      "west": {
+        "y": -90
+      },
+      "up": {
+        "x": -90
+      },
+      "down": {
+        "x": 90
+      }
+    },
+    "inventory": [
+      {}
+    ]
+  }
+}

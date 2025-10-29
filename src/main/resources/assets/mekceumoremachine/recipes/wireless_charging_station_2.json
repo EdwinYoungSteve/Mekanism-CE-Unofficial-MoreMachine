@@ -1,0 +1,44 @@
+{
+  "result": {
+    "nbt": {
+      "tier": 2
+    },
+    "item": "mekceumoremachine:wirelesscharging",
+    "type": "mekanism:item_nbt"
+  },
+  "pattern": [
+    "ABA",
+    "CDC",
+    "EFE"
+  ],
+  "type": "mekanism:ore_shaped",
+  "key": {
+    "A": {
+      "ore": "blockSteel",
+      "type": "forge:ore_dict"
+    },
+    "B": {
+      "item": "mekanism:teleportationcore"
+    },
+    "C": {
+      "ore": "circuitElite",
+      "type": "forge:ore_dict"
+    },
+    "D": {
+      "nbt": {"tier": 2},
+      "item": "mekanism:basicblock2",
+      "data": 4,
+      "type": "mekanism:item_nbt"
+    },
+    "E": {
+      "item": "mekanism:basicblock",
+      "data": 8
+    },
+    "F": {
+      "nbt": {"tier": 2},
+      "item": "mekanism:basicblock2",
+      "data": 3,
+      "type": "mekanism:item_nbt"
+    }
+  }
+}

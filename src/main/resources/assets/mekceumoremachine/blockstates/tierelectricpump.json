@@ -1,0 +1,58 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "all": "mekanism:blocks/models/electric_pump",
+      "all1": "mekceumoremachine:blocks/models/electric_pump_basic_valve"
+    },
+    "model": "mekceumoremachine:electric_pump"
+  },
+  "variants": {
+    "tier": {
+      "elite": {
+        "textures": {
+          "all1": "mekceumoremachine:blocks/models/electric_pump_elite_valve"
+        }
+      },
+      "advanced": {
+        "textures": {
+          "all1": "mekceumoremachine:blocks/models/electric_pump_advanced_valve"
+        }
+      },
+      "ultimate": {
+        "textures": {
+          "all1": "mekceumoremachine:blocks/models/electric_pump_ultimate_valve"
+        }
+      },
+      "basic": {
+        "textures": {
+          "all1": "mekceumoremachine:blocks/models/electric_pump_basic_valve"
+        }
+      },
+      "creative": {}
+    },
+    "facing": {
+      "east": {
+        "y": -90
+      },
+      "south": {},
+      "north": {
+        "y": 180
+      },
+      "west": {
+        "y": 90
+      },
+      "up": {
+        "x": -90
+      },
+      "down": {
+        "x": 90
+      }
+    },
+    "inventory": [
+      {
+        "y": 180
+      }
+    ]
+  }
+}
