@@ -50,7 +50,7 @@ public class TileEntityTierIsotopicCentrifuge extends TileEntityBasicMachine<Gas
     public MachineTier tier = MachineTier.BASIC;
 
     public TileEntityTierIsotopicCentrifuge() {
-        super("washer", "TierIsotopicCentrifuge", 0, BlockStateMachine.MachineType.ISOTOPIC_CENTRIFUGE.getUsage(), 3, 1);
+        super("washer", BlockStateMachine.MachineType.ISOTOPIC_CENTRIFUGE, 3, 1);
         inputTank = new GasTank(MAX_GAS * tier.processes);
         outputTank = new GasTank(MAX_GAS * tier.processes);
         configComponent = new TileComponentConfig(this, TransmissionType.ITEM, TransmissionType.ENERGY, TransmissionType.GAS);

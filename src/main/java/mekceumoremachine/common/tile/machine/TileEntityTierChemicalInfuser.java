@@ -70,7 +70,7 @@ public class TileEntityTierChemicalInfuser extends TileEntityBasicMachine<Chemic
     public MachineTier tier = MachineTier.BASIC;
 
     public TileEntityTierChemicalInfuser() {
-        super("cheminfuser", "TierChemicalInfuser", 0, BlockStateMachine.MachineType.CHEMICAL_INFUSER.getUsage(), 4, 1);
+        super("cheminfuser", BlockStateMachine.MachineType.CHEMICAL_INFUSER, 4, 1);
         leftTank = new GasTank(MAX_GAS * tier.processes);
         rightTank = new GasTank(MAX_GAS * tier.processes);
         centerTank = new GasTank(MAX_GAS * tier.processes);

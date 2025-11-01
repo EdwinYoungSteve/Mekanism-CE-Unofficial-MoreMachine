@@ -87,7 +87,7 @@ public class TileEntityTierElectrolyticSeparator extends TileEntityBasicMachine<
     private int currentRedstoneLevel;
 
     public TileEntityTierElectrolyticSeparator() {
-        super("electrolyticseparator", "TierElectrolyticSeparator", 0, MachineType.ELECTROLYTIC_SEPARATOR.getUsage(), 4, 1);
+        super("electrolyticseparator", MachineType.ELECTROLYTIC_SEPARATOR, 4, 1);
         fluidTank = new FluidTankSync(MAX_GAS * 10 * tier.processes);
         leftTank = new GasTank(MAX_GAS * tier.processes);
         rightTank = new GasTank(MAX_GAS * tier.processes);
