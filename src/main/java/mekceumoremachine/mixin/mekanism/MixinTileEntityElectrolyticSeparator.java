@@ -114,6 +114,6 @@ public abstract class MixinTileEntityElectrolyticSeparator extends TileEntityBas
      */
     @Override
     public boolean shouldDumpRadiation() {
-        return isUpgrade;
+        return isUpgrade && super.shouldDumpRadiation();
     }
 }

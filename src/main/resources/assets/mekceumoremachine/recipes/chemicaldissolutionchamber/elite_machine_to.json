@@ -1,0 +1,17 @@
+{
+  "result": {
+    "item": "mekceumoremachine:tierchemicaldissolutionchamber",
+    "data": 2
+  },
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+    {
+      "nbt": {
+        "recipeType": 19
+      },
+      "item": "mekanism:machineblock",
+      "data": 7,
+      "type": "mekanism:item_nbt"
+    }
+  ]
+}

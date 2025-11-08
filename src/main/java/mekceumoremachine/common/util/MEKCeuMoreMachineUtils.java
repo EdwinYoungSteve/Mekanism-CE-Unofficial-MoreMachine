@@ -19,7 +19,7 @@ import mekanism.common.util.LangUtils;
 import mekanism.common.util.MekanismUtils;
 import mekanism.common.util.SecurityUtils;
 import mekceumoremachine.common.MEKCeuMoreMachine;
-import mekceumoremachine.common.item.itemBlock.ItemBlockTierMachine;
+import mekceumoremachine.common.item.interfaces.IItemTipName;
 import mekceumoremachine.common.tier.MachineTier;
 import mekceumoremachine.common.tile.interfaces.ITierMachine;
 import net.minecraft.block.Block;
@@ -151,7 +151,7 @@ public class MEKCeuMoreMachineUtils {
     }
 
     public static ItemStack getDropItem(Block block, @Nonnull IBlockState state, @Nonnull IBlockAccess world, @Nonnull BlockPos pos) {
-        ItemStack itemStack = new ItemStack(block);
+        ItemStack itemStack = new ItemStack(block, 1, state.getBlock().getMetaFromState(state));
         if (itemStack.getTagCompound() == null) {
             itemStack.setTagCompound(new NBTTagCompound());
         }
@@ -287,8 +287,8 @@ public class MEKCeuMoreMachineUtils {
                 Upgrade.buildMap(ItemDataUtils.getDataMap(itemstack)).forEach((key, value) -> list.add(key.getColor() + "- " + key.getName() + (key.canMultiply() ? ": " + EnumColor.GREY + "x" + value : "")));
             }
         } else {
-            if (itemstack.getItem() instanceof ItemBlockTierMachine machine) {
-                String getDescription = LangUtils.localize("tooltip." + machine.name);
+            if (itemstack.getItem() instanceof IItemTipName machine) {
+                String getDescription = LangUtils.localize("tooltip." + machine.getItemName());
                 list.addAll(MekanismUtils.splitTooltip(getDescription, itemstack));
             }
         }

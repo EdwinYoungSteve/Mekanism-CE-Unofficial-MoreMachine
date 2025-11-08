@@ -123,7 +123,7 @@ public abstract class MixinTileEntitySolarNeutronActivator extends TileEntityCon
      */
     @Override
     public boolean shouldDumpRadiation() {
-        return isUpgrade;
+        return isUpgrade && super.shouldDumpRadiation();
     }
 
 }

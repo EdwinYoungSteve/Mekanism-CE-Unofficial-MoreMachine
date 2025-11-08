@@ -5,6 +5,9 @@ import mekceumoremachine.common.inventory.container.*;
 import mekceumoremachine.common.tile.generator.TileEntityBaseWindGenerator;
 import mekceumoremachine.common.tile.generator.TileEntityBigWindGenerator;
 import mekceumoremachine.common.tile.generator.TileEntityTierWindGenerator;
+import mekceumoremachine.common.tile.machine.TierDissolution.*;
+import mekceumoremachine.common.tile.machine.TierNutritional.*;
+import mekceumoremachine.common.tile.machine.TierOxidizer.*;
 import mekceumoremachine.common.tile.machine.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
@@ -31,9 +34,21 @@ public class CommonProxy implements IGuiProvider {
         registerTileEntity(TileEntityTierChemicalInfuser.class, "tier_chemical_infuser");
         registerTileEntity(TileEntityTierAmbientAccumulator.class, "tier_ambient_accumulator");
         registerTileEntity(TileEntityTierRadioactiveWasteBarrel.class, "tier_radioactive_waste_barrel");
-        registerTileEntity(TileEntityTierChemicalWasher.class,"tier_chemical_washer");
-        registerTileEntity(TileEntityTierWindGenerator.class,"tier_wind_generator");
-        registerTileEntity(TileEntityBigWindGenerator.class,"big_wind_generator");
+        registerTileEntity(TileEntityTierChemicalWasher.class, "tier_chemical_washer");
+        registerTileEntity(TileEntityTierWindGenerator.class, "tier_wind_generator");
+        registerTileEntity(TileEntityBigWindGenerator.class, "big_wind_generator");
+        registerTileEntity(TileEntityTierChemicalDissolutionChamberBasic.class, "tier_chemical_dissolution_chamber_basic");
+        registerTileEntity(TileEntityTierChemicalDissolutionChamberAdvanced.class, "tier_chemical_dissolution_chamber_advanced");
+        registerTileEntity(TileEntityTierChemicalDissolutionChamberElite.class, "tier_chemical_dissolution_chamber_elite");
+        registerTileEntity(TileEntityTierChemicalDissolutionChamberUltimate.class, "tier_chemical_dissolution_chamber_ultimate");
+        registerTileEntity(TileEntityTierNutritionalLiquifierBasic.class, "tier_nutritional_liquifier_basic");
+        registerTileEntity(TileEntityTierNutritionalLiquifierAdvanced.class, "tier_nutritional_liquifier_advanced");
+        registerTileEntity(TileEntityTierNutritionalLiquifierElite.class, "tier_nutritional_liquifier_elite");
+        registerTileEntity(TileEntityTierNutritionalLiquifierUltimate.class, "tier_nutritional_liquifier_ultimate");
+        registerTileEntity(TileEntityTierChemicalOxidizerBasic.class, "tier_chemical_oxidizer_basic");
+        registerTileEntity(TileEntityTierChemicalOxidizerAdvanced.class, "tier_chemical_oxidizer_advanced");
+        registerTileEntity(TileEntityTierChemicalOxidizerElite.class, "tier_chemical_oxidizer_elite");
+        registerTileEntity(TileEntityTierChemicalOxidizerUltimate.class, "tier_chemical_oxidizer_ultimate");
     }
 
 
@@ -46,7 +61,7 @@ public class CommonProxy implements IGuiProvider {
     public void registerBlockRenders() {
     }
 
-    public void init(){
+    public void init() {
     }
 
     public void preInit() {
@@ -67,14 +82,24 @@ public class CommonProxy implements IGuiProvider {
         return switch (ID) {
             case 0 -> new ContainerWirelessCharging(player.inventory, (TileEntityWirelessChargingStation) tileEntity);
             case 1 -> new ContainerTierElectricPump(player.inventory, (TileEntityTierElectricPump) tileEntity);
-            case 2 -> new ContainerTierIsotopicCentrifuge(player.inventory, (TileEntityTierIsotopicCentrifuge) tileEntity);
-            case 3 -> new ContainerTierRotaryCondensentrator(player.inventory, (TileEntityTierRotaryCondensentrator) tileEntity);
-            case 4 -> new ContainerTierElectrolyticSeparator(player.inventory, (TileEntityTierElectrolyticSeparator) tileEntity);
-            case 5 -> new ContainerTierSolarNeutronActivator(player.inventory, (TileEntityTierSolarNeutronActivator) tileEntity);
+            case 2 ->
+                    new ContainerTierIsotopicCentrifuge(player.inventory, (TileEntityTierIsotopicCentrifuge) tileEntity);
+            case 3 ->
+                    new ContainerTierRotaryCondensentrator(player.inventory, (TileEntityTierRotaryCondensentrator) tileEntity);
+            case 4 ->
+                    new ContainerTierElectrolyticSeparator(player.inventory, (TileEntityTierElectrolyticSeparator) tileEntity);
+            case 5 ->
+                    new ContainerTierSolarNeutronActivator(player.inventory, (TileEntityTierSolarNeutronActivator) tileEntity);
             case 6 -> new ContainerTierChemicalInfuser(player.inventory, (TileEntityTierChemicalInfuser) tileEntity);
-            case 7 -> new ContainerTierAmbientAccumulator(player.inventory, (TileEntityTierAmbientAccumulator) tileEntity);
+            case 7 ->
+                    new ContainerTierAmbientAccumulator(player.inventory, (TileEntityTierAmbientAccumulator) tileEntity);
             case 8 -> new ContainerTierChemicalWasher(player.inventory, (TileEntityTierChemicalWasher) tileEntity);
-            case 9 -> new ContainerBaseWindGenerator(player.inventory,(TileEntityBaseWindGenerator) tileEntity);
+            case 9 -> new ContainerBaseWindGenerator(player.inventory, (TileEntityBaseWindGenerator) tileEntity);
+            case 10 ->
+                    new ContainerTierChemicalDissolutionChamber(player.inventory, (TileEntityTierChemicalDissolutionChamber) tileEntity);
+            case 11 ->
+                    new ContainerTierNutritionalLiquifier(player.inventory, (TileEntityTierNutritionalLiquifier) tileEntity);
+            case 12 -> new ContainerTierChemicalOxidizer(player.inventory, (TileEntityTierChemicalOxidizer) tileEntity);
             default -> null;
         };
     }

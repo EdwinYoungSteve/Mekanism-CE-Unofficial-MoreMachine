@@ -1,0 +1,33 @@
+{
+  "result": {
+    "item": "mekceumoremachine:tierchemicaldissolutionchamber",
+    "data": 3
+  },
+  "pattern": [
+    "RCR",
+    "gOg",
+    "RCR"
+  ],
+  "type": "mekanism:ore_shaped",
+  "key": {
+    "R": {
+      "ore": "alloyUltimate",
+      "type": "forge:ore_dict"
+    },
+    "C": {
+      "ore": "circuitUltimate",
+      "type": "forge:ore_dict"
+    },
+    "g": {
+      "ore": "gemDiamond",
+      "type": "forge:ore_dict"
+    },
+    "O": {
+      "nbt": {
+        "tier": 2
+      },
+      "item": "mekceumoremachine:tierchemicaldissolutionchamber",
+      "data": 2
+    }
+  }
+}

@@ -494,7 +494,7 @@ public class TileEntityTierChemicalInfuser extends TileEntityBasicMachine<Chemic
      */
     @Override
     public boolean shouldDumpRadiation() {
-        return isUpgrade;
+        return isUpgrade && super.shouldDumpRadiation();
     }
 }
 

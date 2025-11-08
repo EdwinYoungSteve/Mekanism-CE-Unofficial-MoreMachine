@@ -8,8 +8,10 @@ import mekanism.common.tile.factory.TileEntityFactory;
 import mekanism.common.tile.prefab.TileEntityBasicBlock;
 import mekanism.common.util.LangUtils;
 import mekceumoremachine.common.MEKCeuMoreMachine;
+import mekceumoremachine.common.tile.interfaces.INeedRepeatTierUpgrade;
 import mekceumoremachine.common.tile.interfaces.ITierFirstUpgrade;
 import mekceumoremachine.common.tile.interfaces.ITierMachine;
+import mekceumoremachine.common.tile.machine.TierDissolution.TileEntityTierChemicalDissolutionChamber;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -60,9 +62,9 @@ public class ItemCompositeTierInstaller extends ItemMekanism {
             return EnumActionResult.FAIL;
         }
         //如果该方块是工厂
-        if (tile instanceof TileEntityFactory factory) {
+        if (tile instanceof INeedRepeatTierUpgrade<?> factory) {
             //如果工厂已经是终极或者创造了
-            if (factory.tier.getBaseTier() == BaseTier.ULTIMATE || factory.tier.getBaseTier() == BaseTier.CREATIVE) {
+            if (factory.getNowTier().getBaseTier() == BaseTier.ULTIMATE || factory.getNowTier().getBaseTier() == BaseTier.CREATIVE) {
                 return EnumActionResult.PASS;
             }
             if (factory.CanInstalled()) {
@@ -71,26 +73,26 @@ public class ItemCompositeTierInstaller extends ItemMekanism {
                         continue;
                     }
                     //工厂需要重复获取
-                    if (world.getTileEntity(pos) instanceof TileEntityFactory machine) {
-                        if (machine.tier.getBaseTier() == BaseTier.ULTIMATE || machine.tier.getBaseTier() == BaseTier.CREATIVE) {
+                    if (world.getTileEntity(pos) instanceof INeedRepeatTierUpgrade<?> machine) {
+                        if (machine.getNowTier().getBaseTier() == BaseTier.ULTIMATE || machine.getNowTier().getBaseTier() == BaseTier.CREATIVE) {
                             break;
                         }
-                        if (tier.ordinal() != machine.tier.ordinal() + 1) {
+                        if (tier.ordinal() != machine.getNowTier().getBaseTier().ordinal() + 1) {
                             continue;
                         }
                         machine.upgrade(tier);
                     }
                 }
                 //最后检查工厂是否是终极等级，如果是则清除
-                if (world.getTileEntity(pos) instanceof TileEntityFactory machine) {
-                    if (!player.capabilities.isCreativeMode && machine.tier.getBaseTier() == BaseTier.ULTIMATE) {
+                if (world.getTileEntity(pos) instanceof INeedRepeatTierUpgrade<?> machine) {
+                    if (!player.capabilities.isCreativeMode && machine.getNowTier().getBaseTier() == BaseTier.ULTIMATE) {
                         stack.shrink(1);
                     }
                 }
                 return EnumActionResult.SUCCESS;
             }
             return EnumActionResult.PASS;
-        } else if (tile instanceof ITierMachine<?> upgradeable) {
+        }  else if (tile instanceof ITierMachine<?> upgradeable) {
             if (upgradeable.CanInstalled()) {
                 for (BaseTier tier : BaseTier.values()) {
                     //获取机器的等级

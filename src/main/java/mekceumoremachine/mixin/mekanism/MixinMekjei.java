@@ -21,4 +21,16 @@ public class MixinMekjei {
         ci.cancel();
         registry.addRecipeCatalyst(MachineType.CHEMICAL_WASHER.getStack(), Recipe.CHEMICAL_WASHER.getJEICategory());
     }
+
+    @Inject(method = "registerDissolution", at = @At(value = "INVOKE", target = "Lmekanism/client/jei/RecipeRegistryHelper;registerRecipeItem(Lmezz/jei/api/IModRegistry;Lmekanism/common/block/states/BlockStateMachine$MachineType;Lmekanism/common/recipe/RecipeHandler$Recipe;)V"), cancellable = true)
+    private static void removeDissolution(IModRegistry registry, CallbackInfo ci) {
+        ci.cancel();
+        registry.addRecipeCatalyst(MachineType.CHEMICAL_DISSOLUTION_CHAMBER.getStack(), Recipe.CHEMICAL_DISSOLUTION_CHAMBER.getJEICategory());
+    }
+
+    @Inject(method = "registerOxidizer", at = @At(value = "INVOKE", target = "Lmekanism/client/jei/RecipeRegistryHelper;registerRecipeItem(Lmezz/jei/api/IModRegistry;Lmekanism/common/block/states/BlockStateMachine$MachineType;Lmekanism/common/recipe/RecipeHandler$Recipe;)V"), cancellable = true)
+    private static void removeOxidizer(IModRegistry registry, CallbackInfo ci) {
+        ci.cancel();
+        registry.addRecipeCatalyst(MachineType.CHEMICAL_OXIDIZER.getStack(), Recipe.CHEMICAL_OXIDIZER.getJEICategory());
+    }
 }

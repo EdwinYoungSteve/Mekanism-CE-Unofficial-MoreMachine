@@ -25,7 +25,7 @@ public class ClientTickHandler {
             MachineType type = MachineType.get(stack);
             if (type.isFactory()) {
                 RecipeType recipeType = machine.getRecipeTypeOrNull(stack);
-                if (recipeType == RecipeType.WASHER) {
+                if (recipeType == RecipeType.WASHER || recipeType == RecipeType.Dissolution || recipeType == RecipeType.OXIDIZER) {
                     if (!event.getToolTip().isEmpty()) {
                         List<String> info = new ArrayList<>(event.getToolTip());
                         event.getToolTip().clear();
@@ -34,7 +34,7 @@ public class ClientTickHandler {
                     }
                 }
             }
-        }else if (stack.getItem() instanceof ItemBlockMultiblockGenerator) {
+        } else if (stack.getItem() instanceof ItemBlockMultiblockGenerator) {
             MultiblockMachineGeneratorType type = MultiblockMachineGeneratorType.get(stack);
             if (type == MultiblockMachineGeneratorType.LARGE_WIND_GENERATOR) {
                 if (!event.getToolTip().isEmpty()) {

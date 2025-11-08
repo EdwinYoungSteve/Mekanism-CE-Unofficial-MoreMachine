@@ -15,6 +15,7 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.ForgeRegistry;
@@ -31,45 +32,60 @@ public class MEKCeuMoreMachineRecipes {
          * @author sddsd2332
          * @reason 移除化学清洗机对应的工厂配方
          */
-        removeMekRecipes("machineblock_5_23");
-        removeMekRecipes("machineblock_6_23");
-        removeMekRecipes("machineblock_7_23");
-        removeMekRecipes("machineblock3_7_23");
-
+        removeMekFactoryRecipes(23);
         /**
          * @author sddsd2332
-         * @reason 移除大型风力发电机的对应配方
+         * @reason 移除化学溶解室对应的工厂配方
          */
-        ItemStack EnergyCubeStack = new ItemStack(MekanismBlocks.EnergyCube, 4);
-        if (!EnergyCubeStack.hasTagCompound()) {
-            EnergyCubeStack.setTagCompound(new NBTTagCompound());
+        removeMekFactoryRecipes(19);
+        /**
+         * @author sddsd2332
+         * @reason 移除化学氧化机对应的工厂配方
+         */
+        removeMekFactoryRecipes(21);
+
+        if (Loader.isModLoaded("mekanismmultiblockmachine")) {
+            /**
+             * @author sddsd2332
+             * @reason 移除大型风力发电机的对应配方
+             */
+            ItemStack EnergyCubeStack = new ItemStack(MekanismBlocks.EnergyCube, 4);
+            if (!EnergyCubeStack.hasTagCompound()) {
+                EnergyCubeStack.setTagCompound(new NBTTagCompound());
+            }
+            EnergyCubeStack.getTagCompound().setInteger("tier", 3);
+
+            OreDictionary.getOres("blockSteel", false).forEach(blockSteel -> {
+                OreDictionary.getOres("blockOsmium", false).forEach(blockOsmium -> Recipe.DIGITAL_ASSEMBLY_TABLE.remove(Recipe.DIGITAL_ASSEMBLY_TABLE.get().get(
+                        new CompositeInput(StackUtils.size(blockOsmium, 36), StackUtils.size(blockSteel, 64), StackUtils.size(blockOsmium, 36),
+                                new ItemStack(MekanismBlocks.BasicBlock, 36, 8), new ItemStack(MekanismItems.AtomicAlloy, 36), new ItemStack(MekanismBlocks.BasicBlock, 36, 8),
+                                EnergyCubeStack, new ItemStack(MekanismItems.ControlCircuit, 16, 3), EnergyCubeStack,
+                                FluidRegistry.getFluidStack("water", 20000), new GasStack(MekanismFluids.Oxygen, 10000)))
+                ));
+            });
+
+            /**
+             * @author sddsd2332
+             * @reason 添加本mod的大型风力发电机配方
+             */
+            OreDictionary.getOres("blockSteel", false).forEach(blockSteel -> {
+                OreDictionary.getOres("blockOsmium", false).forEach(blockOsmium -> RecipeHandler.addDigitalAssemblyTableRecipe(
+                        StackUtils.size(blockOsmium, 36), StackUtils.size(blockSteel, 64), StackUtils.size(blockOsmium, 36),
+                        new ItemStack(MekanismBlocks.BasicBlock, 36, 8), new ItemStack(MekanismItems.AtomicAlloy, 36), new ItemStack(MekanismBlocks.BasicBlock, 36, 8),
+                        EnergyCubeStack, new ItemStack(MekanismItems.ControlCircuit, 16, 3), EnergyCubeStack,
+                        FluidRegistry.getFluidStack("water", 20000), new GasStack(MekanismFluids.Oxygen, 10000),
+                        new ItemStack(MEKCeuMoreMachineBlocks.BigWindGenerator, 1), FluidRegistry.getFluidStack("water", 1000), new GasStack(MekanismFluids.Hydrogen, 1000),
+                        100, 2400));
+            });
         }
-        EnergyCubeStack.getTagCompound().setInteger("tier", 3);
 
-        OreDictionary.getOres("blockSteel", false).forEach(blockSteel -> {
-            OreDictionary.getOres("blockOsmium", false).forEach(blockOsmium -> Recipe.DIGITAL_ASSEMBLY_TABLE.remove(Recipe.DIGITAL_ASSEMBLY_TABLE.get().get(new CompositeInput(StackUtils.size(blockOsmium, 36), StackUtils.size(blockSteel, 64), StackUtils.size(blockOsmium, 36),
-                    new ItemStack(MekanismBlocks.BasicBlock, 36, 8), new ItemStack(MekanismItems.AtomicAlloy, 36), new ItemStack(MekanismBlocks.BasicBlock, 36, 8),
-                    EnergyCubeStack, new ItemStack(MekanismItems.ControlCircuit, 16, 3), EnergyCubeStack,
-                    FluidRegistry.getFluidStack("water", 20000), new GasStack(MekanismFluids.Oxygen, 10000)))
-            ));
-        });
+    }
 
-        /**
-         * @author sddsd2332
-         * @reason 添加本mod的大型风力发电机配方
-         */
-        OreDictionary.getOres("blockSteel", false).forEach(blockSteel -> {
-            OreDictionary.getOres("blockOsmium", false).forEach(blockOsmium -> RecipeHandler.addDigitalAssemblyTableRecipe(
-                    StackUtils.size(blockOsmium, 36), StackUtils.size(blockSteel, 64), StackUtils.size(blockOsmium, 36),
-                    new ItemStack(MekanismBlocks.BasicBlock, 36, 8), new ItemStack(MekanismItems.AtomicAlloy, 36), new ItemStack(MekanismBlocks.BasicBlock, 36, 8),
-                    EnergyCubeStack, new ItemStack(MekanismItems.ControlCircuit, 16, 3), EnergyCubeStack,
-                    FluidRegistry.getFluidStack("water", 20000), new GasStack(MekanismFluids.Oxygen, 10000),
-                    new ItemStack(MEKCeuMoreMachineBlocks.BigWindGenerator, 1), FluidRegistry.getFluidStack("water", 1000), new GasStack(MekanismFluids.Hydrogen, 1000),
-                    100, 2400));
-        });
-
-
-
+    public static void removeMekFactoryRecipes(int id) {
+        removeMekRecipes("machineblock_5_" + id);
+        removeMekRecipes("machineblock_6_" + id);
+        removeMekRecipes("machineblock_7_" + id);
+        removeMekRecipes("machineblock3_7_" + id);
     }
 
     public static void removeMekRecipes(String recipeName) {

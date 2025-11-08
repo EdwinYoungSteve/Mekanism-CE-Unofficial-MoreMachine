@@ -9,6 +9,7 @@ import mekanism.common.tile.prefab.TileEntityBasicBlock;
 import mekanism.common.util.ItemDataUtils;
 import mekanism.common.util.LangUtils;
 import mekceumoremachine.common.MEKCeuMoreMachine;
+import mekceumoremachine.common.item.interfaces.IItemTipName;
 import mekceumoremachine.common.tile.interfaces.ITierMachine;
 import mekceumoremachine.common.util.MEKCeuMoreMachineUtils;
 import net.minecraft.block.Block;
@@ -30,7 +31,7 @@ import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.UUID;
 
-public abstract class ItemBlockTierMachine extends ItemBlock implements ISustainedInventory, ITierItem, ISecurityItem {
+public abstract class ItemBlockTierMachine extends ItemBlock implements ISustainedInventory, ITierItem, ISecurityItem, IItemTipName {
 
     public String name;
 
@@ -207,5 +208,8 @@ public abstract class ItemBlockTierMachine extends ItemBlock implements ISustain
         return hasSecurity(stack);
     }
 
+    public  String getItemName(){
+        return name;
+    }
 
 }

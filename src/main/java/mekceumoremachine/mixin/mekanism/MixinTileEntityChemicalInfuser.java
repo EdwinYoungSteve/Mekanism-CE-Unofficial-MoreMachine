@@ -103,6 +103,6 @@ public abstract class MixinTileEntityChemicalInfuser extends TileEntityBasicMach
      */
     @Override
     public boolean shouldDumpRadiation() {
-        return isUpgrade;
+        return isUpgrade && super.shouldDumpRadiation();
     }
 }

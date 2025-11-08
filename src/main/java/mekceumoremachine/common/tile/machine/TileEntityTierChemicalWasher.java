@@ -500,6 +500,6 @@ public class TileEntityTierChemicalWasher extends TileEntityBasicMachine<GasInpu
      */
     @Override
     public boolean shouldDumpRadiation() {
-        return isUpgrade;
+        return isUpgrade && super.shouldDumpRadiation();
     }
 }

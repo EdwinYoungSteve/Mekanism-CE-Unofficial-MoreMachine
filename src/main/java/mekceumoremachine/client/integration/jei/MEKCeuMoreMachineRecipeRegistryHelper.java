@@ -41,13 +41,32 @@ public class MEKCeuMoreMachineRecipeRegistryHelper {
 
     public static void registerTierAmbientAccumulator(IModRegistry registry) {
         registry.addRecipeClickArea(GuiTierAmbientAccumulator.class, 7, 18, 80, 65, Recipe.AMBIENT_ACCUMULATOR.getJEICategory());
-        registerRecipeMachineTierItem(registry,MEKCeuMoreMachineBlocks.TierAmbientAccumulator,Recipe.AMBIENT_ACCUMULATOR.getJEICategory());
+        registerRecipeMachineTierItem(registry, MEKCeuMoreMachineBlocks.TierAmbientAccumulator, Recipe.AMBIENT_ACCUMULATOR.getJEICategory());
     }
 
     public static void registerTierWasher(IModRegistry registry) {
-        registry.addRecipeClickArea(GuiTierChemicalWasher.class,61, 39, 55, 8, Recipe.CHEMICAL_WASHER.getJEICategory());
-        registerRecipeMachineTierItem(registry,MEKCeuMoreMachineBlocks.TierChemicalWasher,Recipe.CHEMICAL_WASHER.getJEICategory());
+        registry.addRecipeClickArea(GuiTierChemicalWasher.class, 61, 39, 55, 8, Recipe.CHEMICAL_WASHER.getJEICategory());
+        registerRecipeMachineTierItem(registry, MEKCeuMoreMachineBlocks.TierChemicalWasher, Recipe.CHEMICAL_WASHER.getJEICategory());
     }
+
+    public static void registerTierChemicalDissolutionChamber(IModRegistry registry) {
+        for (MachineTier tier : MachineTier.values()) {
+            registry.addRecipeCatalyst(getTierFactory(MEKCeuMoreMachineBlocks.TierChemicalDissolutionChamber, tier), Recipe.CHEMICAL_DISSOLUTION_CHAMBER.getJEICategory());
+        }
+    }
+
+    public static void registerTierNutritionalLiquifier(IModRegistry registry) {
+        for (MachineTier tier : MachineTier.values()) {
+            registry.addRecipeCatalyst(getTierFactory(MEKCeuMoreMachineBlocks.TierNutritionalLiquifier, tier), Recipe.NUTRITIONAL_LIQUIFIER.getJEICategory());
+        }
+    }
+
+    public static void registerTierChemicalOxidizer(IModRegistry registry) {
+        for (MachineTier tier : MachineTier.values()) {
+            registry.addRecipeCatalyst(getTierFactory(MEKCeuMoreMachineBlocks.TierChemicalOxidizer, tier), Recipe.CHEMICAL_OXIDIZER.getJEICategory());
+        }
+    }
+
 
     private static void registerRecipeMachineTierItem(IModRegistry registry, Block block, String... recipe) {
         for (MachineTier tier : MachineTier.values()) {
@@ -57,5 +76,9 @@ public class MEKCeuMoreMachineRecipeRegistryHelper {
             }
             registry.addRecipeCatalyst(add, recipe);
         }
+    }
+
+    public static ItemStack getTierFactory(Block block, MachineTier tier) {
+        return new ItemStack(block, 1, tier.ordinal());
     }
 }

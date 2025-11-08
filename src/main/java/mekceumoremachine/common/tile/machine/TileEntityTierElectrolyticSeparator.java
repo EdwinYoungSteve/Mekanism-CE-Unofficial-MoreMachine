@@ -5,6 +5,7 @@ import mekanism.api.EnumColor;
 import mekanism.api.IConfigCardAccess;
 import mekanism.api.TileNetworkList;
 import mekanism.api.gas.*;
+import mekanism.api.math.MathUtils;
 import mekanism.api.transmitters.TransmissionType;
 import mekanism.common.Mekanism;
 import mekanism.common.MekanismFluids;
@@ -21,6 +22,7 @@ import mekanism.common.recipe.inputs.FluidInput;
 import mekanism.common.recipe.machines.SeparatorRecipe;
 import mekanism.common.recipe.outputs.ChemicalPairOutput;
 import mekanism.common.tier.BaseTier;
+import mekanism.common.tier.GasTankTier;
 import mekanism.common.tile.TileEntityGasTank.GasMode;
 import mekanism.common.tile.component.TileComponentConfig;
 import mekanism.common.tile.component.TileComponentEjector;
@@ -78,8 +80,6 @@ public class TileEntityTierElectrolyticSeparator extends TileEntityBasicMachine<
 
     public MachineTier tier = MachineTier.BASIC;
 
-    //TODO
-    public int output = 512;
     public GasMode dumpLeft = GasMode.IDLE;
     public GasMode dumpRight = GasMode.IDLE;
     public SeparatorRecipe cachedRecipe;
@@ -183,10 +183,18 @@ public class TileEntityTierElectrolyticSeparator extends TileEntityBasicMachine<
             } else {
                 tank.draw(dumpAmount, true);
             }
-            if (mode == GasMode.DUMPING_EXCESS && tank.getNeeded() < output) {
-                tank.draw(output - tank.getNeeded(), true);
+            if (mode == GasMode.DUMPING_EXCESS) {
+                int target = getDumpingExcessTarget(tank);
+                int stored = tank.getStored();
+                if (target < stored) {
+                    tank.draw(Math.min(stored - target, GasTankTier.values()[tier.ordinal()].getBaseOutput()), true);
+                }
             }
         }
+    }
+
+    private int getDumpingExcessTarget(GasTank tank) {
+        return MathUtils.clampToInt(tank.getMaxGas() * MekanismConfig.current().general.dumpExcessKeepRatio.val());
     }
 
     private void ejectGas(Set<EnumFacing> outputSides, GasTank tank, EjectSpeedController speedController, int tankIdx) {
@@ -352,7 +360,7 @@ public class TileEntityTierElectrolyticSeparator extends TileEntityBasicMachine<
     public Object[] invoke(int method, Object[] arguments) throws NoSuchMethodException {
         return switch (method) {
             case 0 -> new Object[]{electricityStored};
-            case 1 -> new Object[]{output};
+            case 1 -> new Object[]{GasTankTier.values()[tier.ordinal()].getBaseOutput()};
             case 2 -> new Object[]{BASE_MAX_ENERGY};
             case 3 -> new Object[]{BASE_MAX_ENERGY - electricityStored.get()};
             case 4 -> new Object[]{fluidTank.getFluid() != null ? fluidTank.getFluid().amount : 0};
@@ -658,6 +666,6 @@ public class TileEntityTierElectrolyticSeparator extends TileEntityBasicMachine<
      */
     @Override
     public boolean shouldDumpRadiation() {
-        return isUpgrade;
+        return isUpgrade && super.shouldDumpRadiation();
     }
 }

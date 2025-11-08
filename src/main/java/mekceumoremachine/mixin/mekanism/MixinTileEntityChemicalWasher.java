@@ -101,6 +101,6 @@ public abstract class MixinTileEntityChemicalWasher extends TileEntityUpgradeabl
      */
     @Override
     public boolean shouldDumpRadiation() {
-        return isUpgrade;
+        return isUpgrade && super.shouldDumpRadiation();
     }
 }

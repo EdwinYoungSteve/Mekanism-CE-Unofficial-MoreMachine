@@ -70,8 +70,27 @@ tile.TierWindGenerator.Basic.name=Basic Wind Generator
 tile.TierWindGenerator.Advanced.name=Advanced Wind Generator
 tile.TierWindGenerator.Elite.name=Elite Wind Generator
 tile.TierWindGenerator.Ultimate.name=Ultimate Wind Generator
+tooltip.TierWindGenerator=A generator that uses the strength of the wind to produce energy, with greater efficiency at higher levels.
 tile.BigWindGenerator.name=Big Wind Generator
 tooltip.BigWindGenerator=A generator that uses the strength of the wind to produce energy, with greater efficiency at higher levels.
+
+tile.TierChemicalDissolutionChamber.Basic.name=Basic Chemical Dissolution Chamber
+tile.TierChemicalDissolutionChamber.Advanced.name=Advanced Chemical Dissolution Chamber
+tile.TierChemicalDissolutionChamber.Elite.name=Elite Chemical Dissolution Chamber
+tile.TierChemicalDissolutionChamber.Ultimate.name=Ultimate Chemical Dissolution Chamber
+tooltip.TierChemicalDissolutionChamber=An ultimate machine used to chemically dissolve all impurities of an ore, leaving an unprocessed slurry behind.
+
+tile.TierNutritionalLiquifier.Basic.name=Basic Nutritional Liquifier
+tile.TierNutritionalLiquifier.Advanced.name=Advanced Nutritional Liquifier
+tile.TierNutritionalLiquifier.Elite.name=Elite Nutritional Liquifier
+tile.TierNutritionalLiquifier.Ultimate.name=Ultimate Nutritional Liquifier
+tooltip.TierNutritionalLiquifier=A machine that processes any food into a harmless, easily digestible nutritional paste.
+
+tile.TierChemicalOxidizer.Basic.name=Basic Chemical Oxidizer
+tile.TierChemicalOxidizer.Advanced.name=Advanced Chemical Oxidizer
+tile.TierChemicalOxidizer.Elite.name=Elite Chemical Oxidizer
+tile.TierChemicalOxidizer.Ultimate.name=Ultimate Chemical Oxidizer
+tooltip.TierChemicalOxidizer=A machine capable of oxidizing solid materials into gas phase.
 
 item.CompositeTierInstaller.name=Composite Upgrade Installation Kit
 tooltip.CompositeTierInstaller=Installation component capable of directly upgrading the machine to its final level

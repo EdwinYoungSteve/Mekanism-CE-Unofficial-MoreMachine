@@ -1,0 +1,36 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "mekceumoremachine:chemical_oxidizer",
+    "textures": {
+      "all1": "mekceumoremachine:blocks/models/chemical_oxidizer/basic"
+    }
+  },
+  "variants": {
+    "facing": {
+      "east": {
+        "y": 90
+      },
+      "south": {
+        "y": 180
+      },
+      "north": {},
+      "west": {
+        "y": -90
+      },
+      "up": {
+        "x": -90
+      },
+      "down": {
+        "x": 90
+      }
+    },
+    "active": {
+      "true": {},
+      "false": {}
+    },
+    "inventory": [
+      {}
+    ]
+  }
+}
